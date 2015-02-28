@@ -1,2 +1,2 @@
 # MakeMIT-2015
-Project BoozeMe
+Project BüzMe
