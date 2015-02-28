@@ -1,0 +1,19 @@
+<template name="buzeme">
+  <script>console.log("layout")</script>
+  <header class="top-banner">
+    <span id="top-banner-text-box">
+      <ul>
+        <li id="topnav-name">BüzeMe</li>
+        <li id="topnav-login">{{> loginButtons}}</li>
+      </ul>
+    </span>
+
+  </header>
+  <div class="content-container">
+    {{#if currentUser}}
+      {{> partyPage}}
+    {{else}}
+      {{> landingPage}}
+    {{/if}}
+  </div>
+</template>

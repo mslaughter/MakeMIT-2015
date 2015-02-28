@@ -1,0 +1,61 @@
+/* CSS declarations go here */
+body {
+  font-family: sans-serif;
+  background-color: #C9FFFF;
+  background-image: linear-gradient(to bottom, #4DB8FF, #C9FFFF 40%, #FFB894 110%);
+  background-attachment: fixed;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  padding: 0;
+  margin: 0;
+
+  font-size: 14px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 100%;
+}
+
+.top-banner {
+  display: table;
+  width: 100%;
+  height: 10%;
+
+}
+
+#top-banner-text-box {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#top-banner-text-box ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+}
+
+#top-banner-text-box li {
+  /*display: inline;*/
+}
+
+#topnav-name {
+  font-size: 300%;
+  text-align: left;
+}
+
+#topnav-login {
+  padding-top: 15px;
+  font-size: 100%;
+  float: left;
+}
+
+.content-container {
+  text-align: center;
+}
