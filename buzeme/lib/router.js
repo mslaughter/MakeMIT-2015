@@ -36,6 +36,12 @@ Router.map(function() {
   this.route('findparty');
   this.route('makeparty');
 
+  // this.route('result', {
+  //   data: function () {
+  //     return Todos.findOne(this.params._id).drinking;
+  //   },
+  // });
+
   this.route('listsShow', {
     path: '/party/:_id',
     // subscribe to todos before the page is rendered but don't wait on the
@@ -62,4 +68,37 @@ Router.map(function() {
       Router.go('listsShow', Lists.findOne());
     }
   });
+
+  this.route('results', {
+    path: '/results',
+    where: 'server',
+    action: function() {
+      // GET, POST, PUT, DELETE
+      var requestMethod = this.request.method;
+      // Data from a POST request
+      var requestData = this.request.body;
+      // Could be, e.g. application/xml, etc.
+      this.response.writeHead(200, {'Content-Type': 'text/html'});
+
+      var responseData = 1;
+      if (requestMethod === "GET") {
+        var todos = Todos.findOne({drinking: true});
+        if (! todos) {
+          repsonseData = 0;
+        }
+      }
+      this.response.end('<html><body>' + responseData + '</body></html>');
+    }
+  });
 });
+
+// Router.route('/results', { where: 'server' })
+//   .get(function () {
+//     return 0;
+//   })
+//   .post(function () {
+//     // POST /webhooks/stripe
+//   })
+//   .put(function () {
+//     // PUT /webhooks/stripe
+//   });

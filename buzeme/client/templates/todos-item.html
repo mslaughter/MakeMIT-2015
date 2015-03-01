@@ -1,4 +1,7 @@
 <template name="todosItem">
+  <head>
+    <meta name="drinking" content="{{drinking}}">
+  </head>
   <div class="list-item {{checkedClass}} {{editingClass}}">
     <input type="text" value="{{text}}" placeholder="Task name">
     {{#if isUser}}

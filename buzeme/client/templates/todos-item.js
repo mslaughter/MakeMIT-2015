@@ -18,6 +18,13 @@ Template.todosItem.helpers({
     } else {
       return "";
     }
+  },
+  isDrinking: function() {
+    if (this.drinking) {
+      return 1;
+    } else {
+      return 0;
+    }
   }
 });
 

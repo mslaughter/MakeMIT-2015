@@ -17,11 +17,11 @@ Template.findparty.events({
   'submit': function(event, template) {
     event.preventDefault();
     
-    var partycode = template.$('[name=partycode]').val();
+    var code = template.$('[name=partycode]').val();
     
     var errors = {};
 
-    if (! partycode) {
+    if (! code) {
       errors.partycode = 'Party code is required';
     }
     
@@ -30,7 +30,8 @@ Template.findparty.events({
       return;
     }
 
-    var party = Lists.findOne({"partycode": String(partycode)});
+    var party = Lists.findOne({"partycode": code});
+    console.log(party);
     if (! party) {
         return Session.set(ERRORS_KEY, {'none': error.reason});
     }
