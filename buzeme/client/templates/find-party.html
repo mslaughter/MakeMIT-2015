@@ -1,5 +1,4 @@
-<template name="findParty">
-  <script>console.log("yo trying to find a party, man")</script>
+<template name="findparty">
   <div class="page auth">
     <nav>
       <div class="nav-group">
@@ -9,8 +8,8 @@
 
     <div class="content-scrollable">
       <div class="wrapper-auth">
-        <h1 class="title-auth">Find a Party</h1>
-        <p class="subtitle-auth" >Type in the name of the party you wish to find.</p>
+        <h1 class="title-auth">Find Party.</h1>
+        <p class="subtitle-auth">Let the party start!</p>
 
         <form>
           {{#if errorMessages}}
@@ -21,15 +20,16 @@
             </div>
           {{/if}}
 
-          <div class="input-symbol {{errorClass 'partyname'}}">
-            <input type="partyname" name="partyname" placeholder="Party Name" />
+          <div class="input-symbol {{errorClass 'partycode'}}">
+            <input type="text" name="partycode" placeholder="Party code" />
+            <span class="icon-lock" title="Password"></span>
           </div>
 
-          <button type="submit" class="btn-primary">Find Party!</button>
+          <button type="submit" class="btn-primary">Start Partying</button>
         </form>
       </div>
 
-      <a href="{{pathFor 'join'}}" class="link-auth-alt">Need an account? Join Now.</a>
+      <a href="{{pathFor 'makeparty'}}" class="link-auth-alt">Starting a party? Make one now.</a>
     </div>
   </div>
 </template>

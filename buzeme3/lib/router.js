@@ -37,7 +37,7 @@ Router.map(function() {
   this.route('makeparty');
 
   this.route('listsShow', {
-    path: '/lists/:_id',
+    path: '/party/:_id',
     // subscribe to todos before the page is rendered but don't wait on the
     // subscription, we'll just render the items as they arrive
     onBeforeAction: function () {

@@ -1,13 +1,21 @@
 Router.configure({
   // we use the  appBody template to define the layout for the entire app
-  layoutTemplate: 'buzeme',
+  layoutTemplate: 'appBody',
 
   // the appNotFound template is used for unknown routes and missing lists
-  // notFoundTemplate: 'appNotFound',
+  notFoundTemplate: 'appNotFound',
 
   // show the appLoading template whilst the subscriptions below load their data
-  // loadingTemplate: 'appLoading',
+  loadingTemplate: 'appLoading',
 
+  // wait on the following subscriptions before rendering the page to ensure
+  // the data it's expecting is present
+  waitOn: function() {
+    return [
+      Meteor.subscribe('publicLists'),
+      Meteor.subscribe('privateLists')
+    ];
+  }
 });
 
 dataReadyHold = null;
@@ -18,32 +26,40 @@ if (Meteor.isClient) {
   dataReadyHold = LaunchScreen.hold();
 
   // Show the loading screen on desktop
-  // Router.onBeforeAction('loading', {except: ['join', 'signin']});
-  // Router.onBeforeAction('dataNotFound', {except: ['join', 'signin']});
+  Router.onBeforeAction('loading', {except: ['join', 'signin']});
+  Router.onBeforeAction('dataNotFound', {except: ['join', 'signin']});
 }
 
 Router.map(function() {
-  this.route('partyPage', {
-    path: '/parties',
-  });
+  this.route('join');
+  this.route('signin');
+  this.route('findparty');
+  this.route('makeparty');
 
-  this.route('findParty', {
-    path: '/find',
-  });
-
-  this.route('partyShow', {
-    path: '/parties/:_id',
+  this.route('listsShow', {
+    path: '/party/:_id',
     // subscribe to todos before the page is rendered but don't wait on the
     // subscription, we'll just render the items as they arrive
+    onBeforeAction: function () {
+      this.todosHandle = Meteor.subscribe('todos', this.params._id);
+
+      if (this.ready()) {
+        // Handle for launch screen defined in app-body.js
+        dataReadyHold.release();
+      }
+    },
     data: function () {
-      return Parties.findOne(this.params._id);
+      return Lists.findOne(this.params._id);
     },
     action: function () {
       this.render();
     }
   });
 
-  this.route('buzeme', {
+  this.route('home', {
     path: '/',
+    action: function() {
+      Router.go('listsShow', Lists.findOne());
+    }
   });
 });

@@ -1,0 +1,34 @@
+<template name="makeparty">
+  <div class="page auth">
+    <nav>
+      <div class="nav-group">
+        <a href="#" class="js-menu nav-item"><span class="icon-list-unordered"></span></a>
+      </div>
+    </nav>
+
+    <div class="content-scrollable">
+      <div class="wrapper-auth">
+        <h1 class="title-auth">Make Party.</h1>
+        <p class="subtitle-auth">Let the party start!</p>
+
+        <form>
+          {{#if errorMessages}}
+            <div class="list-errors">
+              {{#each errorMessages}}
+                <div class="list-item">{{this}}</div>
+              {{/each}}
+            </div>
+          {{/if}}
+
+          <div class="input-symbol  {{errorClass 'email'}}">
+            <input type="text" name="partyname" placeholder="Party Name" />
+          </div>
+
+          <button type="submit" class="btn-primary">Start Partying</button>
+        </form>
+      </div>
+
+      <a href="{{pathFor 'findparty'}}" class="link-auth-alt">Joining a party? Find it here.</a>
+    </div>
+  </div>
+</template>
