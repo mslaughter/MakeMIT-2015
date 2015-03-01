@@ -24,7 +24,23 @@ if (Meteor.isClient) {
 
 Router.map(function() {
   this.route('partyPage', {
-    path: '/partypage',
+    path: '/parties',
+  });
+
+  this.route('findParty', {
+    path: '/find',
+  });
+
+  this.route('partyShow', {
+    path: '/parties/:_id',
+    // subscribe to todos before the page is rendered but don't wait on the
+    // subscription, we'll just render the items as they arrive
+    data: function () {
+      return Parties.findOne(this.params._id);
+    },
+    action: function () {
+      this.render();
+    }
   });
 
   this.route('buzeme', {

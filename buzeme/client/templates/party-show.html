@@ -1,0 +1,9 @@
+<template name="partyShow">
+  <div class="container">
+    {{#if is_current_party}}
+      <h2>{{party_name}}</h2>
+    {{else}}
+      {{> yield region="party-section"}}
+    {{/if}}
+  </div>
+</template>
