@@ -87,7 +87,7 @@ Router.map(function() {
           responseData = "off";
         }
       }
-      this.response.end('<html><body>' + responseData + '</body></html>');
+      this.response.end(responseData);
     }
   });
 });
