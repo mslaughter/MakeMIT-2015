@@ -80,11 +80,11 @@ Router.map(function() {
       // Could be, e.g. application/xml, etc.
       this.response.writeHead(200, {'Content-Type': 'text/html'});
 
-      var responseData = 1;
+      var responseData = "on";
       if (requestMethod === "GET") {
         var todos = Todos.findOne({drinking: true});
         if (! todos) {
-          repsonseData = 0;
+          responseData = "off";
         }
       }
       this.response.end('<html><body>' + responseData + '</body></html>');
